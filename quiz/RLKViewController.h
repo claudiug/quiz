@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RLKViewController : UIViewController
+@interface RLKViewController : UIViewController {
+    
+    int currentQuestionIndex;
+    
+    //The model objects
+    
+    NSMutableArray *questions;
+    NSMutableArray *answers;
+    
+    //The view objects
+    
+    IBOutlet UILabel *questionField;
+    IBOutlet UILabel *answerField;
+}
 
 @end
