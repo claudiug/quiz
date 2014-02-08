@@ -14,16 +14,55 @@
 
 @implementation RLKViewController
 
-- (void)viewDidLoad
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        //create two arrays
+        questions = [[NSMutableArray alloc] init];
+        answers = [[NSMutableArray alloc] init];
+        //add items
+        
+        [questions addObject:@"what is 7 + 7 "];
+        [answers addObject:@"14"];
+        [questions addObject:@"what is capital of Germany"];
+        [answers addObject:@"Berlin"];
+        [questions addObject:@"When is the last day of year"];
+        [answers addObject:@"31 December"];
+        [questions addObject:@"what language does the German speak"];
+        [answers addObject:@"nothing, they just use random letters"];
+        NSLog(@"question %@", questions);
+
+    }
+    return self;
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)showQuestion:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    currentQuestionIndex++;
+    if(currentQuestionIndex == [questions count]){
+        currentQuestionIndex = 0;
+    }
+    
+    NSString *qqqq = [questions objectAtIndex:currentQuestionIndex];
+    NSLog(@"current: %@", qqqq);
+    [answerField setText:qqqq];
+    [answerField setText:@"???"];
+    NSLog(@"question %@", questions);
+
 }
+
+- (IBAction)showAnswer:(id)sender
+{
+    //get current answer
+    NSString *response = [answers objectAtIndex:currentQuestionIndex];
+    //display it
+    [answerField setText:response];
+    
+}
+
+
+
+
 
 @end
